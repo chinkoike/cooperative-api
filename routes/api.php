@@ -8,6 +8,15 @@ use App\Http\Controllers\Api\Staff\CooperativeRequestController as StaffCooperat
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login',    [AuthController::class, 'login']);
 
+// Health check
+Route::get('/health', function () {
+    return response()->json([
+        'success' => true,
+        'message' => 'API is healthy',
+        'data'    => null,
+    ]);
+});
+
 // Protected routes (ต้อง login)
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
