@@ -7,7 +7,7 @@
 - **Framework:** Laravel 11
 - **Database:** PostgreSQL
 - **Authentication:** Laravel Sanctum (Token-based)
-- **Language:** PHP 8.2+
+- **Language:** PHP 8.4
 
 ## Requirements
 
