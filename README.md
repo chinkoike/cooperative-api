@@ -11,7 +11,7 @@
 
 ## Requirements
 
-- PHP >= 8.2
+- PHP >= 8.4
 - Composer
 - PostgreSQL
 
@@ -20,6 +20,14 @@
 API URL: `https://cooperative-api-production.up.railway.app`
 
 Health Check: `GET /api/health`
+
+## Postman Setup
+
+1. Import Collection: `postman/cooperative-api.json`
+2. สร้าง Environment ใหม่ใน Postman แล้วเพิ่ม Variable:
+    - `current_token` = (ปล่อยว่าง)
+    - `latest_request_id` = (ปล่อยว่าง)
+3. รัน **LoginPublic** หรือ **LoginStaff** Token จะถูก Set อัตโนมัติ
 
 ## Installation & Setup
 
