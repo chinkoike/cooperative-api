@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Extensions.pgsql", "php82Extensions.mbstring", "php82Extensions.xml", "php82Extensions.curl", "php82Extensions.zip", "nodejs_20"]
+nixPkgs = ["php83", "php83Extensions.pgsql", "php83Extensions.mbstring", "php83Extensions.xml", "php83Extensions.curl", "php83Extensions.zip"]
 
 [phases.install]
 cmds = [
@@ -7,7 +7,7 @@ cmds = [
 ]
 
 [phases.build]
-cmds = []
+cmds = ["php artisan config:cache", "php artisan route:cache"]
 
 [start]
-cmd = "php artisan serve --host=0.0.0.0 --port=$PORT"
+cmd = "php -S 0.0.0.0:$PORT -t public"
