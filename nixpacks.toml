@@ -3,7 +3,7 @@ nixPkgs = ["php82", "php82Extensions.pgsql", "php82Extensions.mbstring", "php82E
 
 [phases.install]
 cmds = [
-    "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && composer install --no-dev --optimize-autoloader --ignore-platform-reqs"
+    "curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer && php /usr/local/bin/composer install --no-dev --optimize-autoloader --ignore-platform-reqs"
 ]
 
 [start]
