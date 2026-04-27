@@ -151,6 +151,16 @@
             }
           ],
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{current_token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "POST",
             "header": [],
             "body": {
@@ -179,6 +189,16 @@
         {
           "name": "GetPublicRequest",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{current_token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -261,11 +281,21 @@
             "disableBodyPruning": true
           },
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{current_token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\r\n    \"email\": \"public@test.com\",\r\n    \"password\": \"password\"\r\n}"
+              "raw": ""
             },
             "url": {
               "raw": "{{base_url}}/api/staff/requests",
@@ -284,6 +314,16 @@
         {
           "name": "FilterByStatus",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{current_token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "GET",
             "header": [],
             "url": {
@@ -309,6 +349,16 @@
         {
           "name": "ApproveRequest",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{current_token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [],
             "body": {
@@ -339,6 +389,16 @@
         {
           "name": "RejectRequest",
           "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{current_token}}",
+                  "type": "string"
+                }
+              ]
+            },
             "method": "PATCH",
             "header": [],
             "body": {
@@ -398,19 +458,13 @@
         "packages": {},
         "requests": {},
         "exec": [
-          "// ตรวจสอบว่า Status Code เป็น 200 (Login สำเร็จ)\r",
-          "if (pm.response.code === 200) {\r",
+          "if (pm.response.code === 200 || pm.response.code === 201) {\r",
           "    var jsonData = pm.response.json();\r",
-          "    \r",
-          "    // ดักไว้หลายๆ ชื่อ ถ้าเจอชื่อไหนตัวแปร token จะได้ค่านั้นไป\r",
           "    var token = jsonData.token || jsonData.access_token || jsonData.data?.token;\r",
           "\r",
           "    if (token) {\r",
-          "        // บันทึกลง Environment\r",
           "        pm.environment.set(\"current_token\", token);\r",
           "        console.log(\"บันทึก Token เรียบร้อย: \" + token);\r",
-          "    } else {\r",
-          "        console.log(\"หา Token ไม่เจอ! ลองเช็คชื่อ Key ใน Response Body ดูครับ\");\r",
           "    }\r",
           "}"
         ]

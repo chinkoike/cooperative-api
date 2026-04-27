@@ -15,6 +15,12 @@
 - Composer
 - PostgreSQL
 
+## Production
+
+API URL: `https://cooperative-api-production.up.railway.app`
+
+Health Check: `GET /api/health`
+
 ## Installation & Setup
 
 ### 1. Clone โปรเจกต์
