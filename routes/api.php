@@ -3,7 +3,7 @@
 use App\Http\Controllers\Api\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Public\CooperativeRequestController as PublicCooperativeRequestController;
-
+use App\Http\Controllers\Api\Staff\CooperativeRequestController as StaffCooperativeRequestController;
 // Public routes (ไม่ต้อง login)
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login',    [AuthController::class, 'login']);
@@ -20,6 +20,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     // Staff routes (role: staff)
     Route::middleware('role:staff')->prefix('staff')->group(function () {
-        // 
+        Route::get('/requests',              [StaffCooperativeRequestController::class, 'index']);
+        Route::patch('/requests/{id}/review', [StaffCooperativeRequestController::class, 'review']);
     });
 });
